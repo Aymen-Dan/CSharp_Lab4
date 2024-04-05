@@ -1,73 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace CSharp_Lab2_ParsonApp
 {
     internal class Person
     {
+        // Fields
+        private readonly string _firstName;
+        private readonly string _lastName;
+        private readonly string _email;
+        private readonly DateTime _dateOfBirth;
 
-        //Properties
-        private string FirstName { get; }
-        private string LastName { get; }
-        private string Email { get; }
-        private DateTime DateOfBirth { get; }
-
-        //Read-only properties
-        public bool IsAdult => CalculateIsAdult();
-        public String SunSign => CalculateSunSign();
-        public String ChineseSign => CalculateChineseSign();
-        public bool IsBirthday => CalculateIsBirthday();
-
-
-        //Constructors
+        // Constructor
         public Person(string firstName, string lastName, string email, DateTime dateOfBirth)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            DateOfBirth = dateOfBirth.Date;
-
+            _firstName = firstName;
+            _lastName = lastName;
+            _email = email;
+            _dateOfBirth = dateOfBirth.Date;
         }
 
-        public Person(string firstName, string lastName, DateTime dateOfBirth)
-            : this(firstName, lastName, "", dateOfBirth)
-        {
-        }
+        // Getters
+        public string GetFirstName() => _firstName;
+        public string GetLastName() => _lastName;
+        public string GetEmail() => _email;
+        public string GetDateOfBirth() => _dateOfBirth.ToString("dd/MM/yyyy");
 
-        public Person(string firstName, string lastName, string email)
-            : this(firstName, lastName, email, DateTime.MinValue)
-        {
-        }
+        // Properties
+        public bool IsAdult => CalculateIsAdult();
+        public string SunSign => CalculateSunSign();
+        public string ChineseSign => CalculateChineseSign();
+        public bool IsBirthday => CalculateIsBirthday();
 
-
-        //Getters
-        internal string GetFirstName() => FirstName;
-        internal string GetLastName() => LastName;
-        internal string GetEmail() => Email;
-        internal string GetDateOfBirth() => DateOfBirth.ToString("dd/MM/yyyy");
-
-
-        //Helper methods
+        // Helper methods
         private bool CalculateIsAdult()
         {
-            int age = DateTime.Today.Year - DateOfBirth.Year;
-            if (DateTime.Today < DateOfBirth.AddYears(age))
+            int age = DateTime.Today.Year - _dateOfBirth.Year;
+            if (DateTime.Today < _dateOfBirth.AddYears(age))
             {
                 age--;
             }
-
-            //check if age is 18 or older
             return age >= 18;
         }
 
         private string CalculateSunSign()
         {
-            int month = DateOfBirth.Month;
-            int day = DateOfBirth.Day;
+            int month = _dateOfBirth.Month;
+            int day = _dateOfBirth.Day;
 
             if ((month == 3 && day >= 21) || (month == 4 && day <= 19))
             {
@@ -125,7 +103,7 @@ namespace CSharp_Lab2_ParsonApp
             int startYear = 1900;
 
             //calculate the offset from the start year
-            int offset = DateOfBirth.Year - startYear;
+            int offset = _dateOfBirth.Year - startYear;
 
             //animal signs of the Chinese zodiac cycle
             string[] animalSigns = { "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig" };
@@ -139,13 +117,7 @@ namespace CSharp_Lab2_ParsonApp
 
         private bool CalculateIsBirthday()
         {
-            bool Birthday = DateOfBirth.Month == DateTime.Today.Month && DateOfBirth.Day == DateTime.Today.Day;
-            if (Birthday)
-            {
-                MessageBox.Show("Happy birthday! May you have excellent health and a lot of luck!", "Birthday", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            return Birthday;
+            return _dateOfBirth.Month == DateTime.Today.Month && _dateOfBirth.Day == DateTime.Today.Day;
         }
     }
 }
-
