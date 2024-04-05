@@ -112,12 +112,6 @@ namespace CSharp_Lab2_ParsonApp
 
         private async Task ProceedAsync()
         {
-            /*if (!CanProceed)
-            {
-                ErrorMessage = "Please fill in all fields.";
-                return;
-            }*/
-
 
             ValidateInputs(); //Validate inputs
 
@@ -140,6 +134,8 @@ namespace CSharp_Lab2_ParsonApp
                     string chineseSign = person.ChineseSign;
                     bool isBirthday = person.IsBirthday;
 
+                    //Greet user if isBD = true
+                    DisplayBirthdayMessage(isBirthday);
 
 
                     //Print out values
@@ -170,6 +166,15 @@ namespace CSharp_Lab2_ParsonApp
             }
         }
 
+
+        private void DisplayBirthdayMessage(bool isBirthday)
+        {
+            if (isBirthday)
+            {
+                // Display the birthday message
+                MessageBox.Show("Happy birthday! May you have excellent health and a lot of luck!", "Birthday", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
 
         private void ValidateInputs()
         {
