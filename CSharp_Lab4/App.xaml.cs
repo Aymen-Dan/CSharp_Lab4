@@ -8,7 +8,6 @@ namespace CSharp_Lab4
     /// Interaction logic for App.xaml
     /// </summary>
     /// 
-    //to make a commit
 
     public partial class App : Application
     {

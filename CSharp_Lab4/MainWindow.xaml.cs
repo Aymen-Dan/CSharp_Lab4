@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using CSharp_Lab2_ParsonApp;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,7 +19,12 @@ namespace CSharp_Lab4
     {
         public MainWindow()
         {
-            InitializeComponent();
+
+            //Set up ViewModel and bind it to the View
+            var viewModel = new PersonViewModel();
+            DataContext = viewModel;
+            Show();
+
         }
     }
 }
