@@ -21,15 +21,17 @@ namespace CSharp_Lab4
         {
 
             //Set up ViewModel and bind it to the View
-            var viewModel = new PersonViewModel();
+            /*var viewModel = new PersonViewModel();
             DataContext = viewModel;
-            Show();
+            Show();*/
+            InitializeComponent();
         }
 
         private void SeePersonList_Click(object sender, RoutedEventArgs e)
         {
             var personListWindow = new PersonListWindow();
             personListWindow.Show();
+
         }
 
         private void AddPerson_Click(object sender, RoutedEventArgs e)
