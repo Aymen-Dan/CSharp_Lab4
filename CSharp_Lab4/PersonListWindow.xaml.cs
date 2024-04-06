@@ -13,7 +13,14 @@ namespace CSharp_Lab4
         public PersonListWindow()
         {
             InitializeComponent();
-            DataContext = new PersonViewModel();
+            var personList = new PersonListViewModel();
+            DataContext = personList;
+            Show();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
