@@ -24,7 +24,18 @@ namespace CSharp_Lab4
             var viewModel = new PersonViewModel();
             DataContext = viewModel;
             Show();
+        }
 
+        private void SeePersonList_Click(object sender, RoutedEventArgs e)
+        {
+            var personListWindow = new PersonListWindow();
+            personListWindow.Show();
+        }
+
+        private void AddPerson_Click(object sender, RoutedEventArgs e)
+        {
+            var addPersonWindow = new AddPersonWindow();
+            addPersonWindow.Show();
         }
     }
 }
