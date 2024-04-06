@@ -86,6 +86,7 @@ namespace CSharp_Lab2_ParsonApp
             }
         }
 
+
         //Commands
         public ICommand ProceedCommand { get; }
 
